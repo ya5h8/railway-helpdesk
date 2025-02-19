@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+# railway-helpdesk
+=======
+>>>>>>> bf222c7 (Initial commit)
 # Railway Complaint Management System
 
 ## Overview
@@ -32,4 +38,9 @@ railway-complaint-management-system
 - Clean and organized CSS for styling.
 
 ## Contributing
+<<<<<<< HEAD
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+=======
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+>>>>>>> f95b88f (Initial commit)
+>>>>>>> bf222c7 (Initial commit)
