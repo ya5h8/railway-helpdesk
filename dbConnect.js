@@ -264,31 +264,49 @@
 
 
 
+// const mongoose = require("mongoose");
+
+// // User Schema
+// const userSchema = new mongoose.Schema({
+//     name: { type: String, required: true },
+//     email: { type: String, required: true, unique: true },
+//     password: { type: String, required: true },
+//     role: { type: String, enum: ['User', 'Admin'], default: 'User' },
+//     date: { type: Date, default: Date.now }
+// });
+
+// // Complaint Schema
+// const complaintSchema = new mongoose.Schema({
+//     name: { type: String, required: true },
+//     email: { type: String, required: true },
+//     complaint: { type: String, required: true },
+//     priority: { type: String, enum: ['High Priority', 'Medium Priority', 'Low Priority'], default: 'Medium Priority' },
+//     status: { type: String, enum: ['New', 'In Progress', 'Resolved', 'Closed'], default: 'New' },
+//     department: { type: String, enum: ['Cleanliness', 'Emergency', 'Canteen', 'General'], default: 'General' },
+//     images: [String], // Array of image URLs/paths
+//     date: { type: Date, default: Date.now }
+// });
+
+// // Create Models
+// const User = mongoose.model("User", userSchema);
+// const Complaint = mongoose.model("Complaint", complaintSchema);
+
+// module.exports = { User, Complaint };
+
+
+
+
+
 const mongoose = require("mongoose");
 
-// User Schema
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: { type: String, enum: ['User', 'Admin'], default: 'User' },
-    date: { type: Date, default: Date.now }
-});
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`Error connecting to MongoDB: ${error.message}`);
+    process.exit(1); // Exit the process with failure
+  }
+};
 
-// Complaint Schema
-const complaintSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    complaint: { type: String, required: true },
-    priority: { type: String, enum: ['High Priority', 'Medium Priority', 'Low Priority'], default: 'Medium Priority' },
-    status: { type: String, enum: ['New', 'In Progress', 'Resolved', 'Closed'], default: 'New' },
-    department: { type: String, enum: ['Cleanliness', 'Emergency', 'Canteen', 'General'], default: 'General' },
-    images: [String], // Array of image URLs/paths
-    date: { type: Date, default: Date.now }
-});
-
-// Create Models
-const User = mongoose.model("User", userSchema);
-const Complaint = mongoose.model("Complaint", complaintSchema);
-
-module.exports = { User, Complaint };
+module.exports = connectDB; // Export the function
